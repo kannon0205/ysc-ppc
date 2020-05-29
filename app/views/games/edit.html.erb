@@ -1,0 +1,115 @@
+<div class="main">
+  <div class="area">
+    <div id="tab-1" class="switch"></div>
+    <div id="tab-2" class="switch"></div>
+    <div class="tabBtn">
+      <ul class="tabBtn">
+        <li><a href="/#tab-1" data-turbolinks="false">ゲーム</a></li>
+        <li><a href="/#tab-2" data-turbolinks="false">メンバー</a></li>
+      </ul>
+    </div>
+    <div class="tab-contents">
+      <div class="title">
+        ゲーム内容の設定
+      </div>
+      <div class="game-form">
+        <% if @game.surve_a == 0 && @game.surve_b == 0 %><!-- サーブが選択されていない時 -->
+          <div class="select_message">
+            サーブを選択してください
+          </div>
+          <div class="surve">
+            <%= link_to("/games/#{params[:id]}/create_surve_a",{class: "surve_link", method: :post}) do %>
+              <i class="fas fa-circle surve_color_lightgray"></i>
+            <% end %>
+            サーブ
+            <%= link_to("/games/#{params[:id]}/create_surve_b",{class: "surve_link", method: :post}) do %>
+              <i class="fas fa-circle surve_color_lightgray"></i>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @game.surve_a == 4 && @game.surve_b == 2 %> <!-- サーブA選択時 -->
+          <div class="surve">
+            <%= link_to("/games/#{params[:id]}/surve_reset",{class: "surve_link", method: :post}) do %>
+              <i class="fas fa-circle surve_color_gold"></i>
+            <% end %>
+            サーブ
+            <%= link_to("/games/#{params[:id]}/create_surve_b",{class: "surve_link", method: :post}) do %>
+              <i class="fas fa-circle surve_color_lightgray"></i>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @game.surve_a == 2 && @game.surve_b == 4 %> <!-- サーブB選択時 -->
+          <div class="surve">
+            <%= link_to("/games/#{params[:id]}/create_surve_a",{class: "surve_link", method: :post}) do %>
+              <i class="fas fa-circle surve_color_lightgray"></i>
+              <% end %>
+            サーブ
+            <%= link_to("/games/#{params[:id]}/surve_reset",{class: "surve_link", method: :post}) do %>
+              <i class="fas fa-circle surve_color_gold"></i>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @game.player_a == "プレイヤー1" && @game.player_b == "プレイヤー2" %>
+          <div class="select_message">
+            プレイヤー1を選択してください
+          </div>
+          <div class="player">
+            <%= @game.player_a %>　vs　<%= @game.player_b %>
+          </div>
+          <div class="player_select">
+            <% @members_index.each do |member| %>
+              <div class="players_index">
+                <%= link_to("/games/#{@game.id}/#{member.id}/create_player_a",{class: "player_btn", method: :post}) do %>
+                  <%= member.name %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% elsif @game.player_a != "プレイヤー1" && @game.player_b == "プレイヤー2" %>
+          <div class="select_message">
+            プレイヤー2を選択してください
+          </div>
+          <div class="player">
+            <%= link_to("#{@game.player_a}","/games/#{@game.id}/player_reset_a", {class: "player_reset", method: "post"}) %>　vs　<%= @game.player_b %>
+          </div>
+          <div class="player_select">
+            <% @members_index.each do |member| %>
+              <div class="players_index">
+                <%= link_to("/games/#{@game.id}/#{member.id}/create_player_b",{class: "player_btn", method: :post, :member_id => member.id}) do %>
+                  <%= member.name %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <% elsif @game.player_a == "プレイヤー1" && @game.player_b != "プレイヤー2" %>
+            <div class="select_message">
+              プレイヤー1を選択してください
+            </div>
+            <div class="player">
+              <%= @game.player_a %>　vs　<%= link_to("#{@game.player_b}","/games/#{@game.id}/player_reset_b", {class: "player_reset", method: "post"}) %>
+            </div>
+            <div class="player_select">
+              <% @members_index.each do |member| %>
+                <div class="players_index">
+                  <%= link_to("/games/#{@game.id}/#{member.id}/create_player_a",{class: "player_btn", method: :post, :member_id => member.id}) do %>
+                    <%= member.name %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+        <% elsif @game.surve_a != 0 %>
+          <div class="player">
+            <%= link_to("#{@game.player_a}","/games/#{@game.id}/player_reset_a", {class: "player_reset", method: "post"}) %>　vs　<%= link_to("#{@game.player_b}","/games/#{@game.id}/player_reset_b", {class: "player_reset", method: "post"}) %>
+          </div>
+          <div class="game_start">
+            <%= link_to("ゲーム開始","/games/#{@game.id}/show", {class: "game_start_btn"}) %>
+          </div>
+        <% else %>
+          <div class="player">
+            <%= link_to("#{@game.player_a}","/games/#{@game.id}/player_reset_a", {class: "player_reset", method: "post"}) %>　vs　<%= link_to("#{@game.player_b}","/games/#{@game.id}/player_reset_b", {class: "player_reset", method: "post"}) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

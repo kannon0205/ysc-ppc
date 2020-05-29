@@ -1,0 +1,68 @@
+<div class="main">
+  <div class="area">
+    <div id="tab-1" class="switch"></div>
+    <div id="tab-2" class="switch"></div>
+    <div class="tabBtn">
+      <ul class="tabBtn">
+        <li><a href="/#tab-1" data-turbolinks="false">ゲーム</a></li>
+        <li><a href="/#tab-2" data-turbolinks="false">メンバー</a></li>
+      </ul>
+    </div>
+    <div class="tab-contents">
+      <div class="game_show">
+
+        <div class="gs_name_left">
+          <%= @game.player_a %>
+        </div>
+        <div class="gs_name_right">
+          <%= @game.player_b %>
+        </div>
+
+        <div class="gs_surve">
+          <% if @game.surve_a % 4 == 0 || @game.surve_a % 4 == 1 %>
+            <i class="fas fa-circle surve_color_gold"></i>
+            サーブ
+            <i class="fas fa-circle surve_color_lightgray"></i>
+          <% end %>
+          <% if @game.surve_b % 4 == 0 || @game.surve_b % 4 == 1 %>
+            <i class="fas fa-circle surve_color_lightgray"></i>
+            サーブ
+            <i class="fas fa-circle surve_color_gold"></i>
+          <% end %>
+        </div>
+
+        <div class="gs_plus_a">
+          <%= link_to("/games/#{params[:id]}/1/plus",{class: "gs_plus", method: :post}) do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
+        </div>
+        <div class="gs_plus_b">
+          <%= link_to("/games/#{params[:id]}/2/plus",{class: "gs_plus", method: :post}) do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
+        </div>
+
+        <div class="gs_score_a">
+          <%= @game.score_a %>
+        </div>
+        <div class="gs_score_b">
+          <%= @game.score_b %>
+        </div>
+        <div class="gs_hyphen">
+          -
+        </div>
+
+        <div class="gs_minus_a">
+          <%= link_to("/games/#{params[:id]}/1/minus",{class: "gs_plus", method: :post}) do %>
+            <i class="fas fa-minus"></i>
+          <% end %>
+        </div>
+        <div class="gs_minus_b">
+          <%= link_to("/games/#{params[:id]}/2/minus",{class: "gs_plus", method: :post}) do %>
+            <i class="fas fa-minus"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

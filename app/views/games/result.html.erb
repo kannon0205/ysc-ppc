@@ -1,0 +1,31 @@
+<div class="main">
+  <div class="area">
+    <div id="tab-1" class="switch"></div>
+    <div id="tab-2" class="switch"></div>
+    <div class="tabBtn">
+      <ul class="tabBtn">
+        <li><a href="/#tab-1" data-turbolinks="false">ゲーム</a></li>
+        <li><a href="/#tab-2" data-turbolinks="false">メンバー</a></li>
+      </ul>
+    </div>
+    <div class="tab-contents">
+      <div class="title">
+        試合終了
+      </div>
+      <div class="r-score">
+        <%= @game.score_a %> - <%= @game.score_b %>
+      </div>
+      <div class="r-message">
+        <% if params[:player] == "1" %>
+          <%= @game.player_a %>が勝利しました
+        <% elsif params[:player] == "2" %>
+          <%= @game.player_b %>が勝利しました
+        <% end %>
+      </div>
+      <div class="r-menu">
+        <%= link_to("一つ前に戻る","/games/#{params[:game_id]}/#{params[:player]}/back",{method: :post, class: "r-btn"}) %>
+        <%= link_to("記録して終了","/games/#{params[:game_id]}/#{params[:player]}/record",{method: :post, class: "r-btn"}) %>
+      </div>
+    </div>
+  </div>
+</div>

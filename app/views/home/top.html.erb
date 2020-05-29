@@ -1,0 +1,74 @@
+<div class= "main">
+  <div class="area">
+    <div id="tab-1" class="switch"></div>
+    <div id="tab-2" class="switch"></div>
+    <div class="tabBtn">
+      <ul class="tabBtn">
+        <li><a href="#tab-1" data-turbolinks="false">ゲーム</a></li>
+        <li><a href="#tab-2" data-turbolinks="false">メンバー</a></li>
+      </ul>
+    </div>
+
+    <div class="tab-contents">
+      <div id="content-1">
+        <div class="create-container">
+          <%= link_to("新規ゲーム作成","/games/create",{method: :post, class: "btn"}) %>
+        </div>
+        <% if @games_index %>
+          <% @games_index.each do |game| %>
+          <div class="index-container"><!-- ここから繰り返す -->
+            <div class="game-index">
+              <div class="gi-id"><!-- Game.id -->
+                Game<%= game.id %>
+              </div>
+              <div class="gi-date"><!-- Game.create_time -->
+                <%= game.created_at.to_s(:datetime_jp) %>
+              </div>
+              <div class="gi-name1"><!-- Game.member1 -->
+                <%= game.player_a %>
+              </div>
+              <div class="gi-name2"><!-- Game.member2 -->
+                <%= game.player_b %>
+              </div>
+              <div class="gi-points"><!-- Game.points1 -->
+                <%= game.score_a %> - <%= game.score_b %>
+              </div>
+              <% if game.surve_a != 0 && game.player_a != "プレイヤー1" && game.player_b != "プレイヤー2" %>
+                <div class="gi-edit-center">
+                  <%= link_to("参加","/games/#{game.id}/show", {class: "create-btn"}) %>
+                </div>
+              <% end %>
+                <div class="gi-edit-right">
+                  <%= link_to("編集","/games/#{game.id}/edit") %>
+                  <%= link_to("削除","/games/#{game.id}/destroy", {method: "post"}) %>
+                </div>
+            </div>
+          </div><!-- ここまで繰り返す -->
+          <% end %>
+        <% else %>
+          <div class="no-game">
+          現在行われているゲームはありません
+          </div>
+        <% end %>
+      </div>
+      <div id="content-2">
+        <div class="create-container">
+          <a href="members/new" class="btn">新規メンバー作成</a>
+        </div>
+        <% @members_index.each do |member| %>
+        <div class="index-container"><!-- ここから繰り返す -->
+          <div class="member-index">
+            <div class="mem-detail">
+              <%= member.name %>
+            </div>
+            <div class="mem-edit">
+              <%= link_to("編集","/members/#{member.id}/edit") %>
+              <%= link_to("削除","/members/#{member.id}/destroy", {method: "post"}) %>
+            </div>
+          </div>
+        </div><!-- ここまで繰り返す -->
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

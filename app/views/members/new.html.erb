@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="area">
+    <div id="tab-1" class="switch"></div>
+    <div id="tab-2" class="switch"></div>
+    <div class="tabBtn">
+      <ul class="tabBtn">
+        <li><a href="/#tab-1" data-turbolinks="false">ゲーム</a></li>
+        <li><a href="/#tab-2" data-turbolinks="false">メンバー</a></li>
+      </ul>
+    </div>
+    <div class="tab-contents">
+      <div class="title">
+        新規メンバーを作成
+      </div>
+      <%= form_tag("/members/create") do %>
+      <div class="form">
+        <div class="member-form">
+          <p>名前</p>
+          <input type="text" name="member_name" class="text-form" >
+          <input type="submit" class="create-btn" value="作成">
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

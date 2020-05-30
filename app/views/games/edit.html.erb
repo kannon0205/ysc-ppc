@@ -13,7 +13,7 @@
         ゲーム内容の設定
       </div>
       <div class="game-form">
-        <% if @game.surve_a == 0 && @game.surve_b == 0 %><!-- サーブが選択されていない時 -->
+        <% if @game.surve_a == 1 && @game.surve_b == 1 %><!-- サーブが選択されていない時 -->
           <div class="select_message">
             サーブを選択してください
           </div>
@@ -97,7 +97,7 @@
                 </div>
               <% end %>
             </div>
-        <% elsif @game.surve_a != 0 %>
+        <% elsif @game.surve_a != 1 %>
           <div class="player">
             <%= link_to("#{@game.player_a}","/games/#{@game.id}/player_reset_a", {class: "player_reset", method: "post"}) %>　vs　<%= link_to("#{@game.player_b}","/games/#{@game.id}/player_reset_b", {class: "player_reset", method: "post"}) %>
           </div>

@@ -40949,3 +40949,43 @@ Completed 200 OK in 38ms (Views: 35.9ms | ActiveRecord: 0.3ms | Allocations: 542
 
   [1m[35m (3.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2020-05-30 10:16:11 +0900
+  [1m[35m (8.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."updated_at" DESC[0m
+  ↳ app/views/home/top.html.erb:18
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY "members"."updated_at" DESC[0m
+  ↳ app/views/home/top.html.erb:58
+  Rendered home/top.html.erb within layouts/application (Duration: 38.3ms | Allocations: 6202)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 285ms (Views: 264.2ms | ActiveRecord: 1.6ms | Allocations: 17111)
+
+
+Started POST "/games/create" for ::1 at 2020-05-30 10:16:15 +0900
+Processing by GamesController#create as HTML
+  Parameters: {"authenticity_token"=>"xZsnKDFZhM6v2nFIfHxn5RSF5Va+xYLCxqxkXTgtwEkZNaCVaUPgBTYyElR3YDR6xZ3cYRlycXfL8rs62x9/XA=="}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:5:in `create'
+  [1m[36mGame Create (2.0ms)[0m  [1m[32mINSERT INTO "games" ("player_a", "player_b", "surve_a", "surve_b", "score_a", "score_b", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["player_a", "プレイヤー1"], ["player_b", "プレイヤー2"], ["surve_a", 0], ["surve_b", 0], ["score_a", 0], ["score_b", 0], ["created_at", "2020-05-30 01:16:15.485149"], ["updated_at", "2020-05-30 01:16:15.485149"]]
+  ↳ app/controllers/games_controller.rb:5:in `create'
+  [1m[35m (15.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:5:in `create'
+Redirected to http://localhost:3000/games/1/edit
+Completed 302 Found in 31ms (ActiveRecord: 18.5ms | Allocations: 8654)
+
+
+Started GET "/games/1/edit" for ::1 at 2020-05-30 10:16:15 +0900
+Processing by GamesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:10:in `edit'
+  Rendering games/edit.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY "members"."updated_at" DESC[0m
+  ↳ app/views/games/edit.html.erb:60
+  Rendered games/edit.html.erb within layouts/application (Duration: 75.5ms | Allocations: 2104)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 151ms (Views: 133.1ms | ActiveRecord: 0.4ms | Allocations: 7998)
+
+

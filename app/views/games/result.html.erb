@@ -17,9 +17,9 @@
       </div>
       <div class="r-message">
         <% if params[:player] == "1" %>
-          <%= @game.player_a %>が勝利しました
+          <span class="r-player"><%= @game.player_a %></span>が勝利しました
         <% elsif params[:player] == "2" %>
-          <%= @game.player_b %>が勝利しました
+          <span class="r-player"><%= @game.player_b %></span>が勝利しました
         <% end %>
       </div>
       <div class="r-menu">

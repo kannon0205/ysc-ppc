@@ -13,7 +13,7 @@
         ゲーム内容の設定
       </div>
       <div class="game-form">
-        <% if @game.surve_a == 0 && @game.surve_b == 0 %><!-- サーブが選択されていない時 -->
+        <% if @game.surve_a < 2 && @game.surve_b < 2 %><!-- サーブが選択されていない時 -->
           <div class="select_message">
             サーブを選択してください
           </div>

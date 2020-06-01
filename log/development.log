@@ -42391,3 +42391,297 @@ Processing by GamesController#edit as HTML
 Completed 200 OK in 39ms (Views: 36.1ms | ActiveRecord: 0.5ms | Allocations: 5467)
 
 
+Started GET "/" for ::1 at 2020-06-01 11:53:50 +0900
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."updated_at" DESC[0m
+  ↳ app/views/home/top.html.erb:18
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY "members"."updated_at" DESC[0m
+  ↳ app/views/home/top.html.erb:58
+  Rendered home/top.html.erb within layouts/application (Duration: 17.6ms | Allocations: 12100)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1797ms (Views: 1784.9ms | ActiveRecord: 2.9ms | Allocations: 67290)
+
+
+Started POST "/games/2/destroy" for ::1 at 2020-06-01 11:53:57 +0900
+Processing by GamesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"gQdKC7lWyQZcTPQ3jRrmJ2kuLXwDVPdXG8hmXQu96gZfzSnb23KBxt6mSnRWNBSqHbVCQjx7yoiEkgWSRl/4NA==", "id"=>"2"}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:14:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:15:in `destroy'
+  [1m[36mGame Destroy (2.3ms)[0m  [1m[31mDELETE FROM "games" WHERE "games"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/games_controller.rb:15:in `destroy'
+  [1m[35m (23.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:15:in `destroy'
+Redirected to http://localhost:3000/#tab-1
+Completed 302 Found in 39ms (ActiveRecord: 25.8ms | Allocations: 3600)
+
+
+Started GET "/" for ::1 at 2020-06-01 11:53:57 +0900
+Processing by HomeController#top as HTML
+  Rendering home/top.html.erb within layouts/application
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY "games"."updated_at" DESC[0m
+  ↳ app/views/home/top.html.erb:18
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY "members"."updated_at" DESC[0m
+  ↳ app/views/home/top.html.erb:58
+  Rendered home/top.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1494)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 39.8ms | ActiveRecord: 0.4ms | Allocations: 5569)
+
+
+Started GET "/games/1/show" for ::1 at 2020-06-01 11:53:58 +0900
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:74:in `show'
+  Rendering games/show.html.erb within layouts/application
+  Rendered games/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 684)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 39.8ms | ActiveRecord: 0.2ms | Allocations: 5910)
+
+
+Started POST "/games/1/2/plus" for ::1 at 2020-06-01 11:54:00 +0900
+Processing by GamesController#plus as HTML
+  Parameters: {"authenticity_token"=>"v+EirAf1PpoTwt1TpT1sqLQN6rtC8xeHB6NUcfc3NWRhK0F8ZdF2WpEoYxB+E54lwJaFhX3cKliY+Te+utUnVg==", "game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:100:in `plus'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[36mGame Update (2.3ms)[0m  [1m[33mUPDATE "games" SET "surve_a" = ?, "surve_b" = ?, "score_b" = ?, "updated_at" = ? WHERE "games"."id" = ?[0m  [["surve_a", 11], ["surve_b", 9], ["score_b", 6], ["updated_at", "2020-06-01 02:54:00.077861"], ["id", 1]]
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[35m (15.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+Redirected to http://localhost:3000/games/1/show
+Completed 302 Found in 29ms (ActiveRecord: 18.0ms | Allocations: 3450)
+
+
+Started GET "/games/1/show" for ::1 at 2020-06-01 11:54:00 +0900
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:74:in `show'
+  Rendering games/show.html.erb within layouts/application
+  Rendered games/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 175)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 53.5ms | ActiveRecord: 0.2ms | Allocations: 4819)
+
+
+Started POST "/games/1/2/plus" for ::1 at 2020-06-01 11:54:00 +0900
+Processing by GamesController#plus as HTML
+  Parameters: {"authenticity_token"=>"xe7Wx+g8mA7QZHrzEQC0BMGxNZJbdgg/eoxQoFB6fI8bJLUXihjQzlKOxLDKLkaJtSparGRZNeDl1jNvHZhuvQ==", "game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:100:in `plus'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[36mGame Update (2.0ms)[0m  [1m[33mUPDATE "games" SET "surve_a" = ?, "surve_b" = ?, "score_b" = ?, "updated_at" = ? WHERE "games"."id" = ?[0m  [["surve_a", 12], ["surve_b", 10], ["score_b", 7], ["updated_at", "2020-06-01 02:54:00.772322"], ["id", 1]]
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[35m (16.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+Redirected to http://localhost:3000/games/1/show
+Completed 302 Found in 26ms (ActiveRecord: 18.3ms | Allocations: 3305)
+
+
+Started GET "/games/1/show" for ::1 at 2020-06-01 11:54:00 +0900
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:74:in `show'
+  Rendering games/show.html.erb within layouts/application
+  Rendered games/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 175)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 33.2ms | ActiveRecord: 0.2ms | Allocations: 4810)
+
+
+Started POST "/games/1/2/plus" for ::1 at 2020-06-01 11:54:01 +0900
+Processing by GamesController#plus as HTML
+  Parameters: {"authenticity_token"=>"/PtFVGYwK5dEczNHdxkhV2vDbffMo9M4+/LlzTxFs5QiMSaEBBRjV8aZjQSsN9PaH1gCyfOM7udkqIYCcaehpg==", "game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:100:in `plus'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[36mGame Update (2.0ms)[0m  [1m[33mUPDATE "games" SET "surve_a" = ?, "surve_b" = ?, "score_b" = ?, "updated_at" = ? WHERE "games"."id" = ?[0m  [["surve_a", 13], ["surve_b", 11], ["score_b", 8], ["updated_at", "2020-06-01 02:54:01.429223"], ["id", 1]]
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[35m (16.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+Redirected to http://localhost:3000/games/1/show
+Completed 302 Found in 27ms (ActiveRecord: 19.1ms | Allocations: 3294)
+
+
+Started GET "/games/1/show" for ::1 at 2020-06-01 11:54:01 +0900
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:74:in `show'
+  Rendering games/show.html.erb within layouts/application
+  Rendered games/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 174)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 41.1ms | ActiveRecord: 0.2ms | Allocations: 4812)
+
+
+Started POST "/games/1/2/plus" for ::1 at 2020-06-01 11:54:01 +0900
+Processing by GamesController#plus as HTML
+  Parameters: {"authenticity_token"=>"PVOABwTqwyEfeqSOKUwicFO5MEhQKzFBvhoZRuXgEwDjmePXZs6L4Z2QGs3yYtD9JyJfdm8EDJ4hQHqJqAIBMg==", "game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:100:in `plus'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[36mGame Update (2.3ms)[0m  [1m[33mUPDATE "games" SET "surve_a" = ?, "surve_b" = ?, "score_b" = ?, "updated_at" = ? WHERE "games"."id" = ?[0m  [["surve_a", 14], ["surve_b", 12], ["score_b", 9], ["updated_at", "2020-06-01 02:54:02.000565"], ["id", 1]]
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[35m (15.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+Redirected to http://localhost:3000/games/1/show
+Completed 302 Found in 28ms (ActiveRecord: 18.1ms | Allocations: 3294)
+
+
+Started GET "/games/1/show" for ::1 at 2020-06-01 11:54:02 +0900
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:74:in `show'
+  Rendering games/show.html.erb within layouts/application
+  Rendered games/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 174)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 31.9ms | ActiveRecord: 0.2ms | Allocations: 4810)
+
+
+Started POST "/games/1/2/plus" for ::1 at 2020-06-01 11:54:02 +0900
+Processing by GamesController#plus as HTML
+  Parameters: {"authenticity_token"=>"H7A322xzJVzy9qbmhbH2kFFDdyZxrZ870ul6UkE9vqLBelQLDldtnHAcGKVenwQdJdgYGE6CouRNsxmdDN+skA==", "game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:100:in `plus'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[36mGame Update (2.2ms)[0m  [1m[33mUPDATE "games" SET "surve_a" = ?, "surve_b" = ?, "score_b" = ?, "updated_at" = ? WHERE "games"."id" = ?[0m  [["surve_a", 15], ["surve_b", 13], ["score_b", 10], ["updated_at", "2020-06-01 02:54:02.632892"], ["id", 1]]
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[35m (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+Redirected to http://localhost:3000/games/1/show
+Completed 302 Found in 30ms (ActiveRecord: 20.4ms | Allocations: 3285)
+
+
+Started GET "/games/1/show" for ::1 at 2020-06-01 11:54:02 +0900
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:74:in `show'
+  Rendering games/show.html.erb within layouts/application
+  Rendered games/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 174)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 69ms (Views: 66.9ms | ActiveRecord: 0.2ms | Allocations: 4814)
+
+
+Started POST "/games/1/2/plus" for ::1 at 2020-06-01 11:54:03 +0900
+Processing by GamesController#plus as HTML
+  Parameters: {"authenticity_token"=>"s/AMmtTHO4s7i/6UqnT3B+LhqK+lhQWB0XPoY7S05W1tOm9KtuNzS7lhQNdxWgWKlnrHkZqqOF5OKYus+Vb3Xw==", "game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:100:in `plus'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[36mGame Update (2.2ms)[0m  [1m[33mUPDATE "games" SET "surve_a" = ?, "surve_b" = ?, "score_b" = ?, "updated_at" = ? WHERE "games"."id" = ?[0m  [["surve_a", 16], ["surve_b", 14], ["score_b", 11], ["updated_at", "2020-06-01 02:54:03.316786"], ["id", 1]]
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+  [1m[35m (19.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/games_controller.rb:120:in `plus'
+Redirected to http://localhost:3000/games/1/show
+Completed 302 Found in 33ms (ActiveRecord: 22.0ms | Allocations: 3272)
+
+
+Started GET "/games/1/show" for ::1 at 2020-06-01 11:54:03 +0900
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:74:in `show'
+Redirected to http://localhost:3000/games/1/2/result
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 930)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:54:03 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.8ms | Allocations: 385)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 35.1ms | ActiveRecord: 0.2ms | Allocations: 5166)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:54:50 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.3ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 161ms (Views: 159.1ms | ActiveRecord: 0.2ms | Allocations: 13627)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:54:51 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.1ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 32.7ms | ActiveRecord: 0.2ms | Allocations: 4742)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:54:55 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.3ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 36.8ms | ActiveRecord: 0.2ms | Allocations: 4758)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:54:56 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.2ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 35.4ms | ActiveRecord: 0.2ms | Allocations: 4736)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:55:33 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.8ms | Allocations: 367)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 45.2ms | ActiveRecord: 0.2ms | Allocations: 6413)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:55:34 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.2ms | Allocations: 95)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 35.0ms | ActiveRecord: 0.4ms | Allocations: 4744)
+
+
+Started GET "/games/1/2/result" for ::1 at 2020-06-01 11:55:54 +0900
+Processing by GamesController#result as HTML
+  Parameters: {"game_id"=>"1", "player"=>"2"}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/games_controller.rb:156:in `result'
+  Rendering games/result.html.erb within layouts/application
+  Rendered games/result.html.erb within layouts/application (Duration: 0.1ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 147ms (Views: 144.5ms | ActiveRecord: 0.3ms | Allocations: 14012)
+
+

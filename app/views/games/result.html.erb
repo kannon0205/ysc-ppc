@@ -23,7 +23,7 @@
         <% end %>
       </div>
       <div class="r-menu">
-        <%= link_to("一つ前に戻る","/games/#{params[:game_id]}/#{params[:player]}/back",{method: :post, class: "r-btn"}) %>
+        <%= link_to("一つ前に戻る","/games/#{params[:game_id]}/#{params[:player]}/back",{method: :post, class: "r-btn"}) %><br>
         <%= link_to("記録して終了","/games/#{params[:game_id]}/#{params[:player]}/record",{method: :post, class: "r-btn"}) %>
       </div>
     </div>

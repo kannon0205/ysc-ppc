@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
   def create
-    @game = Game.new(surve_a: 1, surve_b: 1, player_a: "プレイヤー1", player_b: "プレイヤー2", score_a: 0, score_b: 0)
+    @game = Game.new(surve_a: 0, surve_b: 0, player_a: "プレイヤー1", player_b: "プレイヤー2", score_a: 0, score_b: 0)
     @game.save
     redirect_to("/games/#{@game.id}/edit")
   end
